@@ -21,4 +21,12 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-      
+    - name: Upload artifact result
+      uses: actions/upload-artifact@v3
+      with:
+          name: result-site
+          path: |
+            target/site
+            target/surefire-reports
+            target/*.jar
+    
