@@ -20,11 +20,13 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: |
+        mvn site
+        mvn -B package --file pom.xml
     - name: Upload artifact result
       uses: actions/upload-artifact@v3
       with:
-          name: result-site
+          name: artifact
           path: |
             target/site
             target/surefire-reports
